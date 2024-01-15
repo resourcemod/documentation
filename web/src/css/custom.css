@@ -35,8 +35,16 @@
   }
   a {
     color: #fff;
+    font-weight: 500;
+  }
+  a:hover {
+    color: #D44554;
   }
   .breadcrumbs__link {
     color: #fff;
+  }
+  h4 {
+    display: inline;
+    margin-right: 15px;
   }
 }
