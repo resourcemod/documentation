@@ -20,10 +20,6 @@ Save all plugin files in the same folder as this plugin. Usually several plugins
 
 ResourceMod will support a package manager in the near future for easy interaction with plugins. This package manager will take all the necessary information from the github repository, and will also download the latest plugin release from github.
 
-### Single Responsibility.
-
-For many people this term means nothing, but if you want your plugin to be developed by the community - please separate the logic and don't write everything in one plugin.js file.
-
 ### C++ is a low level, javascript is a high level.
 
 When we first started creating resourcemod - we imagined that we would add all the features that users would need inside the engine. That was a mistake. Please use c++ to support low-level things like http. And after that create a high-level Javascript package, which will be used by plugin creators.

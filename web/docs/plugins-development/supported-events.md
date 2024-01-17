@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 7
 ---
 
 # Supported Events
@@ -101,7 +101,7 @@ Documentation will be developed further over time.
 #### GetDamageArmor()
 #### GetHitGroup()
 
-## player_chat
+## player_chat (not working)
 ### Methods
 #### IsTeamOnly()
 #### GetUserID()
@@ -678,7 +678,7 @@ Documentation will be developed further over time.
 #### GetEntityID()
 #### GetDuration()
 
-## player_falldamage
+## player_falldamage (not working)
 ### Methods
 #### GetPlayer()
 #### GetDamage()

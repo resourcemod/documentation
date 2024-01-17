@@ -6,45 +6,60 @@
 
 /* You can override the default Infima variables here. */
 :root {
-  --ifm-color-primary: #121212;
-  --ifm-color-primary-dark: #121212;
-  --ifm-color-primary-darker: #121212;
-  --ifm-color-primary-darkest: #121212;
-  --ifm-color-primary-light: #121212;
-  --ifm-color-primary-lighter: #121212;
-  --ifm-color-primary-lightest: #121212;
-  --ifm-code-font-size: 95%;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+    --ifm-color-primary: #121212;
+    --ifm-color-primary-dark: #121212;
+    --ifm-color-primary-darker: #121212;
+    --ifm-color-primary-darkest: #121212;
+    --ifm-color-primary-light: #121212;
+    --ifm-color-primary-lighter: #121212;
+    --ifm-color-primary-lightest: #121212;
+    --ifm-code-font-size: 95%;
+    --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
 }
 
 /* For readability concerns, you should choose a lighter palette in dark mode. */
 [data-theme='dark'] {
-  --ifm-color-primary: #121212;
-  --ifm-color-primary-dark: #121212;
-  --ifm-color-primary-darker: #121212;
-  --ifm-color-primary-darkest: #121212;
-  --ifm-color-primary-light: #121212;
-  --ifm-color-primary-lighter: #121212;
-  --ifm-color-primary-lightest: #121212;
-  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
-  .hero__title{
-    color: #fff;
-  }
-  .hero__subtitle {
-    color: #fff;
-  }
-  a {
-    color: #fff;
+    --ifm-color-primary: #121212;
+    --ifm-color-primary-dark: #121212;
+    --ifm-color-primary-darker: #121212;
+    --ifm-color-primary-darkest: #121212;
+    --ifm-color-primary-light: #121212;
+    --ifm-color-primary-lighter: #121212;
+    --ifm-color-primary-lightest: #121212;
+    --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+    --var-hero-title-color: #fff;
+    --var-link-color: #fff;
+    --var-link-hover-color: #D44554;
+}
+
+.link-button{
+    color:#fff!important;
+    background-color:#121212;
+    border:none;
+}
+
+.hero__title{
+    color: var(--var-hero-title-color)!important;;
+}
+
+.hero__subtitle {
+    color: var(--var-hero-title-color)!important;
+}
+
+a {
+    color: var(--var-link-color)!important;
     font-weight: 500;
-  }
-  a:hover {
-    color: #D44554;
-  }
-  .breadcrumbs__link {
-    color: #fff;
-  }
-  h4 {
+}
+
+a:hover {
+    color: var(--var-link-hover-color)!important;;
+}
+
+.breadcrumbs__link {
+    color: var(--var-link-color)!important;;
+}
+
+h4 {
     display: inline;
     margin-right: 15px;
-  }
 }

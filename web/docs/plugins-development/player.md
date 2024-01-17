@@ -30,6 +30,21 @@ player.Slap(hp: int) // will hit the player's hp by a certain value
 ```
 player.Slay() // will kill the player.
 ```
+### GetTeam
+```
+player.GetTeam() // returns the team number (0-3) where 0 is unknown team
+```
+### Respawn
+```
+player.Respawn() // will respawn player. Works only if player is dead.
+```
+### ChangeTeam
+```
+player.ChangeTeam(1) // will move the player into the speculators
+player.ChangeTeam(2) // will move the player into the terrorist team
+player.ChangeTeam(3) // will move the player into the counter-terrorist team
+player.ChangeTeam(2, true) // will move the player into the terrorist team and kill
+```
 
 ## Properties
 
