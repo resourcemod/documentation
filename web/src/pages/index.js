@@ -49,7 +49,7 @@ function HomepageHeader() {
                         </Link>
                         <Link
                             className="button button--secondary button--lg link-button"
-                            to="/docs/getting-started">
+                            to="https://github.com/resourcemod/resourcemod">
                             GitHub
                         </Link>
                     </div>

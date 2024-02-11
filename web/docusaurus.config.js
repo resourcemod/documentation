@@ -77,8 +77,18 @@ const config = {
             label: 'Documentation',
           },
           {
-            href: 'https://github.com/resourcemod/documentation',
+            href: 'https://github.com/resourcemod/resourcemod',
             label: 'GitHub',
+            position: 'right',
+          },
+          {
+            href: 'https://discord.com/invite/BM3ySz7qm2',
+            label: 'Discord',
+            position: 'right',
+          },
+          {
+            href: 'https://saido.pro',
+            label: 'Saido',
             position: 'right',
           },
         ],
