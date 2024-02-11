@@ -1,5 +1,5 @@
 ---
-sidebar_position: 6
+sidebar_position: 7
 ---
 
 # Exception handling
@@ -8,6 +8,6 @@ The error handling is exactly like the error handling of any javascript runtime 
 try {
     somelogic();
 } catch(e) {
-    console.log(e)
+    console.error("Failed!", e)
 }
 ```

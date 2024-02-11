@@ -8,46 +8,47 @@ Let me first show you how to install resourcemod on your CS2 server.
 
 ## Install resourcemod
 
-1. Download the latest release from [our repository](https://github.com/ResourceMod/resourcemod).
-2. Download [Metamod:Source](https://www.sourcemm.net/downloads.php/?branch=master).
-3. Unzip metamod to your server folder
-4. Open `gameinfo.gi` file with your favorite text editor
-5. Find the line `Game_LowViolence	csgo_lv // Perfect World content override`
-6. Type `Game	csgo/addons/metamod` right after this line
-7. Download .vdf file from resourcemod release repository
-8. Put resourcemod.vdf to `csgo/addons/metamod` folder
-9. Save it and open ResourceMod release archive
-10. Open addons folder and create `resourcemod` folder inside
-11. Put everything from resourcemod release archive to this folder
+1. Install [Metamod:Source](https://www.sourcemm.net/downloads.php/?branch=master).
+2. Install [NodeJS](https://nodejs.org/).
+3. Open `cmd` and navigate to `your_server_path/addons` folder.
+4. Type `npx create-resourcemod-app@latest .`
 
 Done! Now start the server and enjoy javascript plugins.
 
 ## Install plugin
 
-The original idea of ResourceMod was that you do not have to install plugins by dragging and dropping files on your server, but the reality was more complicated and in the Alpha version of ResourceMod we did not have time to create a full-fledged package manager.
+The original idea of ResourceMod was that you do not have to install plugins by dragging and dropping files on your server. Since we were able to use a full-fledged nodejs runtime, we decided that the ideal solution would be to use npm packages as plugins for your server.
 
-1. Download a plugin
-2. Put it into your `addons/resourcemod/plugins` folder
-3. Add this plugin to `plugins.json` file like that
-```jsx title="addons/resourcemod/plugins.json"
-  ...
-  "plugin_name": "plugin_version"
-  ...
+1. Find a plugin. [They can be here](https://www.npmjs.com/search?q=resourcemod)
+2. Run `npm i {plugin_name}` inside `addons/resourcemod/` folder.
+3. Every plugin must have an entry point, usually a constant-anonymous function to be specified in the resourcemod.config.js file. For example like this:
+```jsx title="resourcemod.config.js"
+const {useWelcomeMessages} = require('welcome-messages-plugin')
+...
+plugins: [
+    useWelcomeMessages({
+        prefix: "Server >",
+        connect: true,
+        disconnect: true
+    }),
+],
 ```
 
 ## Create your own plugin
 
 Javascript is a fun language to create anything you want. ResourceMod will help you turn your idea into reality using the Source2 engine.
 
-1. Create folder in `addons/resourcemod/plugins` with the name of your plugin.
-2. Create a single .js file called `plugin.js` in that folder. This is your plugin entrypoint.
-3. Create a plugin.json file with some information about your awesome plugin.
-```jsx title="addons/resourcemod/plugins/*plugin_name*/plugin.json"
-{
-    "name": "example_plugin",
-    "authors": ["Twelvee"],
-    "website": "https://resourcemod.com/",
-    "version": "1.0"
-}
-```
-4. Now you can code your own logic on top of Source 2 engine.
+1. Create an empty folder.
+2. Run `npm init` inside of it.
+3. Create an entrypoint file (index.js by default).
+4. Create a single entrypoint const that server creators will call inside resourcemod.config.js file. Just like `useWelcomeMessages` from the example above.
+5. Now you can code your own logic on top of Source 2 engine.
+
+Before publishing the plugin to the registry, I advise you to watch a video tutorial about it.
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/J4b_T-qH3BY?si=urhujvTisjZ5HXmX" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+You can also check out the example plugin, and just copy what you need from there.
+
+- [GitHub - Welcome Messages Plugin](https://github.com/resourcemod/welcome-messages-plugin)
+- [NPM - Welcome Messages Plugin](https://www.npmjs.com/package/welcome-messages-plugin)

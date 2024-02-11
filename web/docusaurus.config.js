@@ -10,10 +10,10 @@ import {themes as prismThemes} from 'prism-react-renderer';
 const config = {
   title: 'ResourceMod',
   tagline: 'Documentation',
-  favicon: 'img/logo.svg',
+  favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://docs.resourcemod.net',
+  url: 'https://rmod.dev',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
   baseUrl: '/',
@@ -44,7 +44,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/resourcemod/documentation/web',
+            'https://github.com/resourcemod/documentation/blob/main/web',
         },
         theme: {
           customCss: './src/css/custom.css',
@@ -62,11 +62,11 @@ const config = {
         disableSwitch: false,
         respectPrefersColorScheme: false,
       },
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/logo.svg',
       navbar: {
-        title: 'ResourceMod Docs',
+        title: 'resourcemod.',
         logo: {
-          alt: 'ResourceMod Docs',
+          alt: 'resourcemod',
           src: 'img/logo.svg',
         },
         items: [
