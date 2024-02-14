@@ -27,8 +27,8 @@ events.onEvent('player_chat', callback)
 const {events} = require('resourcemod')
 
 events.onPlayerChat((data) => {
-    console.log(data.getPlayer().getName())
-    data.getPlayer().hint("You said: "+data.getMessage())
+    console.log(data.player.name)
+    data.player.hint("You said: "+data.message)
 })
 ```
 
@@ -42,7 +42,7 @@ The data object is a regular Javascript object of the Event class (RMEvent in c+
 The main principle of ResourceMod is to give the simplest possible API to work with plugins, so instead of Source2 entities (PlayerController/PlayerPawn) we implemented a single Player class, which is passed every time an event implies it.
 ```jsx title="inside event callback function"
     ...
-    data.getPlayer() // Returns an object of the player class that will allow full control of this player.
+    data.player // Returns an object of the player class that will allow full control of this player.
     ...
 ```
 
@@ -55,7 +55,7 @@ For some of them we have made a system of canceling the event, it is very easy t
 const {events, constants} = require('resourcemod')
 ...
 events.onClientConnect((event) => {
-    if (event.getPlayer().getName() === 'bad_guy') {
+    if (badguys.includes(event.steamId)) {
         return constants.PREVENT_EVENT;
     }
 })
@@ -70,7 +70,7 @@ You can also undo the action by changing the logic of the event:
 const {events} = require('resourcemod')
 ...
 events.onPlayerHurt((event) => {
-    const hp = event.getPlayer().getHp()
-    event.getPlayer.setHp(hp + event.getPlayer().getDamage().hp) // restore player damaged hp
+    const hp = event.player.hp
+    event.player.hp = hp + event.player.damage.hp // restore player damaged hp
 })
 ```

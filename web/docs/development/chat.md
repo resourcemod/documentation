@@ -44,7 +44,7 @@ chat.sayToSlot(slot: int, message: string, destination: int)
 const {events, chat, constants} = require('resourcemod')
 
 events.onPlayerHurt((data) => {
-    chat.sayToSlot(data.getPlayer().getSlot(), 'ouch!')
-    chat.sayToSlot(data.getPlayer().getSlot(), 'Hint ouch!', constants.HUD_PRINT_CENTER) // hint
+    chat.sayToSlot(data.player.slot, 'ouch!')
+    chat.sayToSlot(data.player.slot, 'Hint ouch!', constants.HUD_PRINT_CENTER) // hint
 });
 ```

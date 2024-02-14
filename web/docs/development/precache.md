@@ -22,7 +22,7 @@ module.exports = {
 5. Set the model to player
 ```jsx
 event.onPlayerSpawn((event) => {
-    event.getPlayer().setModel('models/characters/your_model.vmdl')
+    event.player.setModel('models/characters/your_model.vmdl')
 })
 ```
 
@@ -31,7 +31,7 @@ event.onPlayerSpawn((event) => {
 If you use Saido FastDL, then you do not need to specify a precache for sounds; you can play the sound on the client like this:
 ```jsx
 event.onPlayerSpawn((event) => {
-    event.getPlayer().playSound('name/repository/file.vsnd') // will play sound 'sounds/name/repository/file.vsnd_c'
+    event.player.playSound('name/repository/file.vsnd') // will play sound 'sounds/name/repository/file.vsnd_c'
 })
 ```
 

@@ -12,20 +12,20 @@ const codeBlock = `
 const {Color, events, chat} = require('resourcemod')
 
 events.onPlayerSpawn((event) => {
-    event.getPlayer().setModel('models/your/custom/player/model.vmdl');
-    event.getPlayer().setColor(new Color(255, 255, 255, 0.5));
+    event.player.setModel('models/your/custom/player/model.vmdl');
+    event.player.setColor(new Color(255, 255, 255, 0.5));
 })
 
 events.onPlayerBlind((event) => {
-    if (event.getPlayer().getSlot() === event.getAttacker().getSlot()) {
-        event.getPlayer().hint(\`you blinded yourself.\`)
-        chat.sayToEveryone(event.getPlayer().getName() + " just blinded himself..");
+    if (event.player.slot === event.attacker.slot) {
+        event.player.hint(\`you blinded yourself.\`)
+        chat.sayToEveryone(\`$\{event.player.name\} just blinded himself..\`);
     }
 })
 
 events.onPlayerChat((event) => {
-    if (event.getMessage().startsWith('!help')) {
-        event.getPlayer().say('Please, read resourcemod docs: https://rmod.dev/docs/');
+    if (event.message.startsWith('!help')) {
+        event.player.say('Please, read resourcemod docs: https://rmod.dev/docs/');
     }
 })
 `
