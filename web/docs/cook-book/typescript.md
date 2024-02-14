@@ -86,7 +86,7 @@ Second - add a script into `package.json` that will compile your typescript code
 ```jsx title="csgo/addons/resourcemod/package.json"
     ...
     "scripts": {
-        "ts:compile": "tsc"
+        "build": "tsc"
     },
     ...
 ```
