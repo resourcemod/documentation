@@ -25,7 +25,7 @@ const {events, chat, constants} = require('resourcemod')
 
 events.onPlayerHurt((data) => {
     chat.sayToEveryone('ouch!')
-    chat.sayToEveryone('Hint ouch!', constants.HUD_PRINT_CENTER) // hint
+    chat.sayToEveryone('Hint ouch!', constants.GameMessageTarget.Hint) // center
 });
 ```
 
@@ -45,6 +45,6 @@ const {events, chat, constants} = require('resourcemod')
 
 events.onPlayerHurt((data) => {
     chat.sayToSlot(data.player.slot, 'ouch!')
-    chat.sayToSlot(data.player.slot, 'Hint ouch!', constants.HUD_PRINT_CENTER) // hint
+    chat.sayToSlot(data.player.slot, 'Hint ouch!', constants.GameMessageTarget.Hint) // center
 });
 ```
