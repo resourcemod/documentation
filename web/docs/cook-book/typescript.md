@@ -79,7 +79,7 @@ Make sure your compiler will compile commonjs module, because currently resource
 
 First - install typescript by running this command:
 
-`npm i typescript @types/node --save-dev`
+`npm i typescript --save-dev` and `npm i @types/node --save-dev` if you're using commonjs modules
 
 Second - add a script into `package.json` that will compile your typescript code into javascript.
 
@@ -94,5 +94,5 @@ Second - add a script into `package.json` that will compile your typescript code
 ### Test it
 
 1. Change the entrypoint in `resourcemod.config.js` to `dist/server.js`
-2. Run `npm run ts:compile` command
+2. Run `npm run build` command
 3. Start your server!
