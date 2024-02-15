@@ -30,7 +30,7 @@ Make sure your compiler will compile commonjs module, because currently resource
 ```jsx title="csgo/addons/resourcemod/tsconfig.json"
 {
     "compilerOptions": {
-        "target": "ES5",
+        "target": "ES6",
         "lib": [
             "ES6",
             "ESNext",
