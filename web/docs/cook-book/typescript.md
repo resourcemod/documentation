@@ -79,14 +79,14 @@ Make sure your compiler will compile commonjs module, because currently resource
 
 First - install typescript by running this command:
 
-`npm i typescript --save-dev`
+`npm i typescript @types/node --save-dev`
 
 Second - add a script into `package.json` that will compile your typescript code into javascript.
 
 ```jsx title="csgo/addons/resourcemod/package.json"
     ...
     "scripts": {
-        "ts:compile": "tsc"
+        "build": "tsc"
     },
     ...
 ```
