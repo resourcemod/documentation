@@ -21,6 +21,7 @@ Currently, this class contains the following methods and properties.
 | slot            | number   | true      | Player slot number                      |
 | hp              | number   | false     |                                         |
 | steamId64       | string/0 | true      | SteamId 64 as string or 0 if it's a bot |
+| isBot           | boolean  | true      |                                         |
 | isAlive         | string/0 | true      |                                         |
 | isConnected     | boolean  | true      |                                         |
 | isConnecting    | boolean  | true      |                                         |
