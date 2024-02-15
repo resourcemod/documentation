@@ -48,3 +48,37 @@ events.onPlayerHurt((data) => {
     chat.sayToSlot(data.player.slot, 'Hint ouch!', constants.GameMessageTarget.Hint) // center
 });
 ```
+
+## Colors
+
+As in previous parts of Counter-Strike you can set the color of your chat message. Unfortunately, it is not possible to change the color of a message in hint, at least for now.
+
+ResourceMod supports the following colors:
+```jsx
+enum Colors {
+    Default = " \x01",
+    DarkRed = " \x02",
+    LightPurple = " \x03",
+    Green = " \x04",
+    Olive = " \x05",
+    Lime = " \x06",
+    Red = " \x07",
+    Grey = " \x08",
+    Yellow = " \x09",
+    Silver = " \x0A",
+    LightBlue = " \x0B",
+    Blue = " \x0C",
+    Purple = " \x0E",
+    LightRed = " \x0F",
+    Orange = " \x10"
+}
+```
+And this is how you can set the color of your hint:
+
+```jsx title="addons/resourcemod/src/server.js"
+const {events, chat} = require('resourcemod')
+
+events.onPlayerChat((event) => {
+    event.player.say(`${chat.Colors.Blue} [ResourceMod] ${chat.Colors.Red} new chat event!`)
+})
+```

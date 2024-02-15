@@ -11,6 +11,7 @@ const config = {
   title: 'ResourceMod',
   tagline: 'Documentation',
   favicon: 'img/favicon.ico',
+  staticDirectories: ['static'],
 
   // Set the production url of your site here
   url: 'https://rmod.dev',
