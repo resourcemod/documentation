@@ -1,84 +1,138 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 ---
 
-# Chat
+# Weapons
 
-Chat allows plugin creators to inform the player, and can also be a place where server creators publish important news for players.
-Chat in resourcemod is very easy to use.
+With the resourcemod `1.0.30-beta` update, you now have the ability to use the Weapons API. At the moment it is still beta API and not all possible methods are available.
 
-## Send a message to global chat (for everyone)
+## Give weapon
 
-It is very easy to send a message to the global chat - just use the method chat.sayToEveryone().
+To give a weapon to a player, the following script must be performed
+
 ```jsx title="addons/resourcemod/src/server.js"
-const {chat} = require('resourcemod');
+const {events, Weapon} = require('resourcemod');
 ...
-chat.sayToEveryone(message: string, destination: int);
-```
-### Parameters
-1. message - everything you want to say.
-2. destination, default - chat.
-
-### Example
-```jsx title="addons/resourcemod/src/server.js"
-const {events, chat, constants} = require('resourcemod')
-
-events.onPlayerHurt((data) => {
-    chat.sayToEveryone('ouch!')
-    chat.sayToEveryone('Hint ouch!', constants.GameMessageTarget.Hint) // center
-});
+events.onPlayerChat((event) => {
+    if (event.message.startsWith('!give_ak')) {
+        event.player.giveWeapon(Weapon.Ak47)
+    }
+})
 ```
 
-## Send a message to a player
+or directly with Weapons API
 
 ```jsx title="addons/resourcemod/src/server.js"
-chat.sayToSlot(slot: int, message: string, destination: int)
-```
-### Parameters
-1. slot - player slot received from some event, for example.
-2. message - everything you want to say.
-3. destination, default - chat
-
-### Example
-```jsx title="addons/resourcemod/src/server.js"
-const {events, chat, constants} = require('resourcemod')
-
-events.onPlayerHurt((data) => {
-    chat.sayToSlot(data.player.slot, 'ouch!')
-    chat.sayToSlot(data.player.slot, 'Hint ouch!', constants.GameMessageTarget.Hint) // center
-});
+const {events, weapons, Weapon} = require('resourcemod');
+...
+events.onPlayerChat((event) => {
+    if (event.message.startsWith('!give_ak')) {
+        weapons.give(event.player.slot, Weapon.Ak47)
+    }
+})
 ```
 
-## Colors
+### Weapon enum
+To simplify weapon naming we have developed the enum:
 
-As in previous parts of Counter-Strike you can set the color of your chat message. Unfortunately, it is not possible to change the color of a message in hint, at least for now.
-
-ResourceMod supports the following colors:
 ```jsx
-enum Colors {
-    Default = " \x01",
-    DarkRed = " \x02",
-    LightPurple = " \x03",
-    Green = " \x04",
-    Olive = " \x05",
-    Lime = " \x06",
-    Red = " \x07",
-    Grey = " \x08",
-    Yellow = " \x09",
-    Silver = " \x0A",
-    LightBlue = " \x0B",
-    Blue = " \x0C",
-    Purple = " \x0E",
-    LightRed = " \x0F",
-    Orange = " \x10"
+enum Weapon {
+    Ak47 = "weapon_ak47",
+    Aug = "weapon_aug",
+    Awp = "weapon_awp",
+    Bizon = "weapon_bizon",
+    C4 = "weapon_c4",
+    Deagle = "weapon_deagle",
+    Decoy = "weapon_decoy",
+    Elite = "weapon_elite",
+    Famas = "weapon_famas",
+    FiveSeven = "weapon_fiveseven",
+    Flash = "weapon_flashbang",
+    G3SG1 = "weapon_g3sg1",
+    Galilar = "weapon_galilar",
+    Glock = "weapon_glock",
+    HealShot = "weapon_healthshot",
+    HEGrenade = "weapon_hegrenade",
+    HKP2000 = "weapon_hkp2000",
+    IncGrenade = "weapon_incgrenade",
+    Knife = "weapon_knife",
+    M249 = "weapon_m249",
+    M4A1 = "weapon_m4a1",
+    Mac10 = "weapon_mac10",
+    Mag7 = "weapon_mag7",
+    Molotov = "weapon_molotov",
+    Mp7 = "weapon_mp7",
+    Negev = "weapon_negev",
+    Nova = "weapon_nova",
+    P250 = "weapon_p250",
+    P90 = "weapon_p90",
+    SawedOff = "weapon_sawedoff",
+    SCAR20 = "weapon_scar20",
+    SG556 = "weapon_sg556",
+    Smoke = "weapon_smokegrenade",
+    SSH08 = "weapon_ssg08",
+    Taser = "weapon_taser",
+    Tec9 = "weapon_tec9",
+    UMP45 = "weapon_ump45",
+    XM1014 = "weapon_xm1014",
 }
 ```
-And this is how you can set the color of your hint:
+
+## Drop weapon
 
 ```jsx title="addons/resourcemod/src/server.js"
-const {events, chat} = require('resourcemod')
-
+const {events, Weapon} = require('resourcemod');
+...
 events.onPlayerChat((event) => {
-    event.player.say(`${chat.Colors.Blue} [ResourceMod] ${chat.Colors.Red} new chat event!`)
+    if (event.message.startsWith('!drop')) {
+        event.player.dropWeapon()
+    }
 })
+```
+
+or directly with Weapons API
+
+```jsx title="addons/resourcemod/src/server.js"
+const {events, weapons, Weapon} = require('resourcemod');
+...
+events.onPlayerChat((event) => {
+    if (event.message.startsWith('!drop')) {
+        weapons.drop(event.player.slot)
+    }
+})
+```
+
+## Getting player loadout
+
+We have developed a system where you can get the name of the weapon in any player loadout slot.
+
+```jsx title="addons/resourcemod/src/server.js"
+const {events, weapons, GearSlot} = require('resourcemod');
+...
+events.onPlayerChat((event) => {
+    console.log(weapons.getWeaponFromGearSlot(event.player.slot, GearSlot.Rifle))
+    console.log(weapons.getWeaponFromGearSlot(event.player.slot, GearSlot.Pistol))
+    console.log(weapons.getWeaponFromGearSlot(event.player.slot, GearSlot.Knife))
+    console.log(weapons.getWeaponFromGearSlot(event.player.slot, GearSlot.Grenades))
+    console.log(weapons.getWeaponFromGearSlot(event.player.slot, GearSlot.C4))
+    console.log(weapons.getWeaponFromGearSlot(event.player.slot, GearSlot.Boosts))
+    console.log(weapons.getWeaponFromGearSlot(event.player.slot, GearSlot.Utility))
+    console.log(weapons.getWeaponFromGearSlot(event.player.slot, GearSlot.Count))
+    console.log(weapons.getWeaponFromGearSlot(event.player.slot, GearSlot.CurrentWeapon))
+    console.log(weapons.getWeaponFromGearSlot(event.player.slot, GearSlot.First))
+    console.log(weapons.getWeaponFromGearSlot(event.player.slot, GearSlot.Last))
+});
+```
+
+or just receive current players weapon:
+```jsx title="addons/resourcemod/src/server.js"
+const {events, Weapon} = require('resourcemod');
+...
+events.onPlayerChat((event) => {
+    if (event.player.currentWeapon == Weapon.Ak47) {
+        console.log("Ak!")
+        return;
+    }
+    console.log("Not ak..")
+});
 ```
