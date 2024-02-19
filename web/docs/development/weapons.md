@@ -102,6 +102,18 @@ events.onPlayerChat((event) => {
 })
 ```
 
+You can also remove dropped weapon by passing a `remove` argument.
+
+```jsx title="addons/resourcemod/src/server.js"
+const {events, weapons, Weapon} = require('resourcemod');
+...
+events.onPlayerChat((event) => {
+    if (event.message.startsWith('!drop')) {
+        weapons.drop(event.player.slot, true) // will remove dropped item
+    }
+})
+```
+
 ## Getting player loadout
 
 We have developed a system where you can get the name of the weapon in any player loadout slot.
